@@ -1,0 +1,579 @@
+/* ============ BASE ============ */
+:root {
+  --ink: #1f2a1c;
+  --olive: #3d4f2f;
+  --sumac: #9b2c2c;
+  --saffron: #e8a317;
+  --paper: #fbfaf5;
+  --line: #d9d6c6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans", system-ui, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Bricolage Grotesque", system-ui, Arial, sans-serif;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+  margin: 0.4em 0;
+}
+
+a {
+  color: var(--sumac);
+}
+
+:focus-visible {
+  outline: 3px solid var(--saffron);
+  outline-offset: 2px;
+}
+
+/* ============ LAYOUT: sidebar on the left, page on the right ============ */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem;
+}
+
+.muted {
+  color: #6b735f;
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.grow {
+  flex: 1;
+}
+
+/* ============ SIDEBAR ============ */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background-color: rgb(1, 43, 4);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  gap: 0.4rem;
+}
+
+/* small logo */
+.sidebar img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--saffron);
+}
+
+.sidebar h2 {
+  margin: 0.3rem 0 1.2rem;
+  font-size: 1.5rem;
+}
+
+.sidebar .links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.4rem;
+}
+
+.sidebar .links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.sidebar .links a:hover {
+  background-color: var(--saffron);
+  color: var(--ink);
+}
+
+/* ============ BUTTONS ============ */
+/* the original site-wide button */
+.btn {
+  display: inline-block;
+  background: var(--sumac);
+  color: white;
+  border: 0;
+  padding: 0.55rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background: #7f2222;
+}
+
+.btn.small {
+  padding: 0.15rem 0.7rem;
+  font-size: 0.9rem;
+}
+
+.btn.full {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* pill-style link buttons: used as className="btn btn-primary" / "btn btn-outline" */
+.btn-primary,
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.4rem;
+  border: 2px solid var(--sumac);
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+.btn-primary:active,
+.btn-outline:active {
+  transform: scale(0.97);
+}
+
+/* filled: Go to cart */
+.btn-primary {
+  background: var(--sumac);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #7f2222;
+  border-color: #7f2222;
+}
+
+/* outlined: Back to menu */
+.btn-outline {
+  background: transparent;
+  color: var(--sumac);
+}
+
+.btn-outline:hover {
+  background: var(--sumac);
+  color: white;
+}
+
+/* the round counter inside the cart button */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: white;
+  color: var(--sumac);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* ============ HOME PAGE ============ */
+.home-photo {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.home-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 2rem;
+}
+
+.ticket {
+  background: white;
+  border: 2px dashed var(--olive);
+  border-radius: 6px;
+  padding: 1.5rem;
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+  box-shadow: 6px 6px 0 var(--saffron);
+}
+
+.ticket h2 {
+  margin-top: 0;
+}
+
+.ticket-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.35rem 0;
+  border-bottom: 2px dotted var(--line);
+}
+
+.ticket-row a {
+  flex: 1;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* boxes used on Home and About */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.feature {
+  border-left: 4px solid var(--saffron);
+  padding-left: 1rem;
+}
+
+/* ============ MENU PAGE: filters and dish cards (original) ============ */
+.filters {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font: inherit;
+  background: white;
+}
+
+.filters input {
+  flex: 2 1 220px;
+  width: auto;
+}
+
+.filters select {
+  flex: 1 1 180px;
+  width: auto;
+}
+
+.chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.75rem 0 1.5rem;
+}
+
+.chip {
+  border: 1.5px solid var(--olive);
+  background: transparent;
+  color: var(--olive);
+  border-radius: 999px;
+  padding: 0.2rem 0.9rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+.chip.on, .chip:hover {
+  background: var(--olive);
+  color: white;
+}
+
+.dish-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dish-photo {
+  display: block;
+  height: 170px;
+  background: #efe9d2;
+}
+
+.dish-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dish-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.dish-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.dish-info h3 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.dish-info p {
+  flex: 1;
+  margin: 0;
+  color: #55604d;
+}
+
+/* ============ MENU PAGE: text list with + / − ============ */
+.menu-list {
+  max-width: 700px;
+}
+
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.menu-text h3 {
+  margin: 0 0 0.2rem;
+}
+
+.menu-desc {
+  margin: 0 0 0.4rem;
+  color: #55604d;
+}
+
+.menu-price {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.qty-controls button {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--olive);
+  background: white;
+  color: var(--olive);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.qty-controls button:hover:not(:disabled) {
+  background: var(--olive);
+  color: white;
+}
+
+.qty-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* the plain number between − and +: cancels the bordered .qty box below */
+.qty-controls .qty {
+  border: 0;
+  min-width: 1.5rem;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* ============ CART PAGE ============ */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+}
+
+.cart-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.cart-photo {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid var(--olive);
+  border-radius: 8px;
+}
+
+.qty button {
+  background: none;
+  border: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1.2rem;
+  color: var(--olive);
+  cursor: pointer;
+}
+
+.qty span {
+  min-width: 2rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.link-button {
+  background: none;
+  border: 0;
+  color: var(--sumac);
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* cart list with totals */
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 700px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.line-total {
+  font-weight: 700;
+}
+
+.cart-item button {
+  background: none;
+  border: 1.5px solid var(--sumac);
+  color: var(--sumac);
+  border-radius: 6px;
+  padding: 0.25rem 0.8rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.cart-item button:hover {
+  background: var(--sumac);
+  color: white;
+}
+
+.cart-total {
+  margin: 1.25rem 0;
+}
+
+/* ============ FORMS (cart and contact) ============ */
+.grid.two {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+
+label {
+  display: block;
+  margin: 0.7rem 0 0.25rem;
+  font-weight: 500;
+}
+
+.error {
+  color: var(--sumac);
+  font-weight: 500;
+}
+
+.success {
+  color: var(--olive);
+  font-weight: 700;
+}
+
+/* ============ PHONES: the sidebar becomes a bar at the top ============ */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.6rem;
+  }
+
+  .sidebar img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .sidebar h2 {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .sidebar .links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+}
